@@ -9,7 +9,7 @@ jobs:
     steps:
       -
         name: Delete huge unnecessary tools folder at:https://github.com/orgs/community/discussions/25678#discussioncomment-3248696
-        run: rm -rf /opt/hostedtoolcache;rm -rf /usr/share/dotnet/;sudo apt list --installed;sudo dpkg-query -W -f='${Installed-Size;8}  ${Package}\n' | sort -n;df -h
+        run: rm -rf /opt/hostedtoolcache;rm -rf /usr/share/dotnet/;sudo apt list --installed;sudo du -sh /*;df -h
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
