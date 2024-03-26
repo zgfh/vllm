@@ -8,6 +8,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
+        name: Free Up GitHub Actions Ubuntu Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          # This might remove tools that are actually needed, if set to "true" but frees about 6 GB
+          tool-cache: false
+
+          # All of these default to true, but feel free to set to "false" if necessary for your workflow
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          swap-storage: true
+      -
         name: Delete huge unnecessary tools folder at:https://github.com/orgs/community/discussions/25678#discussioncomment-3248696
         run: rm -rf /opt/hostedtoolcache;rm -rf /usr/share/dotnet/;ls /mnt/;ls /opt;ls /var;sudo du -sh /usr/*;df -h; sudo dpkg-query -W -f='${Installed-Size;8}  ${Package}\n' | sort -n;
       -
